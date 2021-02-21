@@ -6,12 +6,10 @@ public class DriverFactory {
 
     private static DriverFactory instance = new DriverFactory();
     private WebDriver webDriver = null;
-    ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>() // thread local driver object for webdriver
-    {
+    ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>() {
         @Override
         protected WebDriver initialValue() {
-
-            return webDriver;// can be replaced with other browser drivers
+            return webDriver;
         }
     };
 
@@ -19,16 +17,12 @@ public class DriverFactory {
 
     }
 
-    public static DriverFactory getInstance(WebDriver... driver) {
-        if (driver.length > 0) {
-            instance.setDriver(driver[0]);
-        }
+    public static DriverFactory getInstance() {
         return instance;
     }
+
     public static DriverFactory setDriverInstance(WebDriver driver) {
-
-            instance.setDriver(driver);
-
+        instance.setDriver(driver);
         return instance;
     }
 
